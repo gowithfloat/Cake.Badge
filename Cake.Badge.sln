@@ -1,0 +1,34 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Badge", "Cake.Badge\Cake.Badge.csproj", "{8AFC0B58-E5AB-4142-A228-4D47976E00B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Badge.Tests", "Cake.Badge.Tests\Cake.Badge.Tests.csproj", "{0E598357-1AF3-46F3-9D16-BBBA1855D01B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A90BD392-EC08-46D7-91DC-94FF1502561E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AFC0B58-E5AB-4142-A228-4D47976E00B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AFC0B58-E5AB-4142-A228-4D47976E00B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AFC0B58-E5AB-4142-A228-4D47976E00B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AFC0B58-E5AB-4142-A228-4D47976E00B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E598357-1AF3-46F3-9D16-BBBA1855D01B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E598357-1AF3-46F3-9D16-BBBA1855D01B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E598357-1AF3-46F3-9D16-BBBA1855D01B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E598357-1AF3-46F3-9D16-BBBA1855D01B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.StandardHeader = $1
+		$1.Text = @<copyright file="${FileName}" company="Float">\nCopyright (c) ${Year} Float, All rights reserved.\nShared under an MIT license. See license.md for details.\n</copyright>
+		$0.VersionControlPolicy = $2
+	EndGlobalSection
+EndGlobal
