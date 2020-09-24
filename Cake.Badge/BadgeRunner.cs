@@ -40,8 +40,7 @@ namespace Cake.Badge
         /// <inheritdoc />
         public IBadgeRunner Run(BadgeSettings settings)
         {
-            var args = GetSettingsArguments(settings);
-            Run(settings, args);
+            Run(settings, GetSettingsArguments(settings));
             return this;
         }
 
@@ -51,11 +50,6 @@ namespace Cake.Badge
         /// <inheritdoc />
         protected override IEnumerable<string> GetToolExecutableNames() => new[] { Badge };
 
-        static ProcessArgumentBuilder GetSettingsArguments(BadgeSettings settings)
-        {
-            var args = new ProcessArgumentBuilder();
-            settings?.Evaluate(args);
-            return args;
-        }
+        static ProcessArgumentBuilder GetSettingsArguments(BadgeSettings settings) => settings?.Evaluate();
     }
 }

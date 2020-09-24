@@ -198,7 +198,9 @@ namespace Cake.Badge
         {
             if (color.IsNamedColor)
             {
+#pragma warning disable CA1308 // Normalize strings to uppercase
                 return color.Name.ToLowerInvariant();
+#pragma warning restore CA1308 // Normalize strings to uppercase
             }
             else
             {

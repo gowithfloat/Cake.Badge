@@ -80,7 +80,7 @@ namespace Cake.Badge
         /// Gets or sets the position of shield on icon, relative to gravity.
         /// </summary>
         /// <value>The relative X and Y offsets.</value>
-        public Tuple<float, float> ShieldGeometry { get; set; }
+        public Tuple<int, int> ShieldGeometry { get; set; }
 
         /// <summary>
         /// Gets or sets the position of shield on icon.
@@ -113,12 +113,9 @@ namespace Cake.Badge
         /// <value><c>true</c> if icons should be grayscale, <c>false</c> otherwise.</value>
         public bool Grayscale { get; set; }
 
-        internal void Evaluate(ProcessArgumentBuilder args)
+        internal ProcessArgumentBuilder Evaluate()
         {
-            if (args == null)
-            {
-                throw new ArgumentNullException(nameof(args));
-            }
+            var args = new ProcessArgumentBuilder();
 
             if (Verbose)
             {
@@ -140,9 +137,9 @@ namespace Cake.Badge
                 args.Append("--alpha_channel");
             }
 
-            if (Custom != null)
+            if (Custom is string custom)
             {
-                args.Append($"--custom {Custom}");
+                args.Append($"--custom {custom}");
             }
 
             if (NoBadge)
@@ -157,22 +154,19 @@ namespace Cake.Badge
                 args.Append($"--shield_parameters {shieldSettings.ToQueryParameters()}");
             }
 
-            // todo: shield parameters
-
-            if (ShieldIoTimeout != null)
+            if (ShieldIoTimeout is int shieldIoTimeout)
             {
-                args.Append($"--shield_io_timeout {ShieldIoTimeout}");
+                args.Append($"--shield_io_timeout {shieldIoTimeout}");
             }
 
-            if (ShieldGeometry != null)
+            if (ShieldGeometry is Tuple<int, int> shieldGeometry)
             {
-                // probably broken (no +/-)
-                args.Append($"--shield_geometry {ShieldGeometry.Item1}{ShieldGeometry.Item2}%");
+                args.Append($"--shield_geometry {Sign(shieldGeometry.Item1)}{Math.Abs(shieldGeometry.Item1)}{Sign(shieldGeometry.Item2)}{Math.Abs(shieldGeometry.Item2)}%");
             }
 
             if (ShieldGravity is Gravity gravity)
             {
-                args.Append($"--shield_gravity {Enum.GetName(typeof(Gravity), gravity)}");
+                args.Append($"--shield_gravity {gravity}");
             }
 
             if (ShieldScale is float scale)
@@ -185,15 +179,19 @@ namespace Cake.Badge
                 args.Append($"--shield_no_resize");
             }
 
-            if (!string.IsNullOrWhiteSpace(nameof(Glob)))
+            if (Glob is string glob)
             {
-                args.Append($"--glob {Glob}");
+                args.Append($"--glob {glob}");
             }
 
             if (Grayscale)
             {
                 args.Append("--grayscale");
             }
+
+            return args;
         }
+
+        static string Sign(int val) => val >= 0 ? "+" : "-";
     }
 }
