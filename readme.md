@@ -6,7 +6,7 @@ A plugin for [Cake](https://cakebuild.net/) that integrates with [badge](https:/
 
 `badge` must be callable from the command line. I would recommend installing the [Ruby version manager](https://rvm.io/), activating Ruby 2.7.0, and installing via:
 
-   gem install badge
+    gem install badge
 
 ## Usage
 
